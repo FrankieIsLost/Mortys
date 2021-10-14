@@ -19,3 +19,16 @@ When Alice withdraws mortys from her vault, these mortys go directly into the bu
 ### Martingale Randomness 
 
 We use Chainlink VRF as a provably-fair source of randomness for the Martingale settlement
+
+## How to run 
+
+You'll need to add your alchemy key in `hardhat.config.js` in order to run tests against forked mainnet. After that, run: 
+
+```bash
+# Install dependencies
+npm install
+
+# test contracts with hardhat
+npx hardhat test
+```
+
