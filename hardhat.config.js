@@ -1,4 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-solhint");
+
 
 module.exports = {
   solidity: {

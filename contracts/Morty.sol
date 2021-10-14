@@ -28,7 +28,7 @@ contract Morty is ERC20, ERC721Holder, VRFConsumerBase {
     /// @notice  id to be used for next created vault
     uint256 public currentVaultId = 1;
 
-    /// @notice vault and all associated information
+    /// @notice vault and required state
     struct Vault {
         uint256 id;
         address owner;
@@ -100,16 +100,15 @@ contract Morty is ERC20, ERC721Holder, VRFConsumerBase {
     ///@notice create a morty class 
     ///_tokenAddresses and _tokenIds are parallel arrays which are used to define class membership
     constructor(string memory _name
-               ,string memory _symbol
-               ,address[] memory _tokenAddresses
-               ,uint256[] memory _tokenIds
-               ,uint256 _initialVaultBalance
-               ,address _vrfCoordinator
-               ,address _link
-               ,bytes32 _keyHash
-               ,uint256 _fee
-    ) ERC20(_name, _symbol) VRFConsumerBase(_vrfCoordinator, _link)
-     {
+                ,string memory _symbol
+                ,address[] memory _tokenAddresses
+                ,uint256[] memory _tokenIds
+                ,uint256 _initialVaultBalance
+                ,address _vrfCoordinator
+                ,address _link
+                ,bytes32 _keyHash
+                ,uint256 _fee
+    ) ERC20(_name, _symbol) VRFConsumerBase(_vrfCoordinator, _link) {
         require(_tokenAddresses.length == _tokenIds.length, "token address and token id list must have same length");
         //put class members into classMember map
         for(uint i = 0; i < _tokenAddresses.length; i++) {
@@ -272,7 +271,7 @@ contract Morty is ERC20, ERC721Holder, VRFConsumerBase {
         }
         if (vault.vMortyBalance == initialVaultBalance) {
             vault.state = VaultState.settledForOwner;
-             emit SettlementCompleted(vault.id, true);
+            emit SettlementCompleted(vault.id, true);
         }
     }
 
