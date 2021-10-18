@@ -1,5 +1,4 @@
 const { expect } = require("chai");
-const { address } = require("faker");
 const { ethers } = require("hardhat");
 
 //issue with chainlink provided mocks causes extra WARNING logs 
